@@ -35,7 +35,7 @@ this proposal, they'll follow the nonce rules the same as before.
 When an un-ordered transaction is included into a block, the transaction hash is
 recorded in a dictionary. New transactions are checked against this dictionary for
 duplicates, and to prevent the dictionary grow indefinitely, the transaction must
-specify `timeout_timestamp` for expiration, so it's safe to removed it from the
+specify `timeout_timestamp` for expiration, so it's safe to remove it from the
 dictionary after it's expired.
 
 The dictionary can be simply implemented as an in-memory golang map, a preliminary
@@ -64,7 +64,7 @@ We facilitate this by storing the transaction's hash in a durable map, `Unordere
 to prevent duplicates, i.e. replay attacks. Upon transaction ingress during `CheckTx`,
 we check if the transaction's hash exists in this map or if the TTL value is stale,
 i.e. before the current block time. If so, we reject it. Upon inclusion in a block
-during `DeliverTx`, the transaction's hash is set in the map along with it's TTL
+during `DeliverTx`, the transaction's hash is set in the map along with its TTL
 value.
 
 This map is evaluated at the end of each block, e.g. ABCI `Commit`, and all stale
