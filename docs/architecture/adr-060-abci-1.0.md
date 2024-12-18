@@ -137,7 +137,7 @@ transactions entirely with other transactions.
 
 When evaluating transactions from `RequestPrepareProposal`, the application will
 ignore *ALL* transactions sent to it in the request and instead reap up to
-`RequestPrepareProposal.max_tx_bytes` from it's own mempool.
+`RequestPrepareProposal.max_tx_bytes` from its own mempool.
 
 Since an application can technically insert or inject transactions on `Insert`
 during `CheckTx` execution, it is recommended that applications ensure transaction
@@ -161,7 +161,7 @@ For most applications, simply calling the `AnteHandler` chain would suffice, but
 there could easily be other applications that need more control over the validation
 process of the proposed block, such as ensuring txs are in a certain order or
 that certain transactions are included. While this theoretically could be achieved
-with a custom `AnteHandler` implementation, it's not the cleanest UX or the most
+with a custom `AnteHandler` implementation, it is not the cleanest UX or the most
 efficient solution.
 
 Instead, we will define an additional ABCI interface method on the existing
